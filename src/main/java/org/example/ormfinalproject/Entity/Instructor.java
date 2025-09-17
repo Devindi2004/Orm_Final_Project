@@ -12,7 +12,6 @@ public class Instructor {
         this.email = email;
         this.instructorId = instructorId;
     }
-
     public String getPhone() {
         return phone;
     }
