@@ -13,7 +13,8 @@ public class Student {
 
     @Id
     @Column(name = "student_id")
-    private String studentId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)   // ,eken auto generate wenwa athin id ywanna one na
+    private long studentId;
 
     private String name;
     private String email;

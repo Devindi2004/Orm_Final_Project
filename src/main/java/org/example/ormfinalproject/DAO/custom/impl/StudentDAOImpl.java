@@ -48,7 +48,7 @@ public class StudentDAOImpl implements StudentDAO {
     public boolean update(Student customerDTO) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfigaration.getInstance().getSession();
         session.beginTransaction();
-        session.save(customerDTO);
+        session.update(customerDTO);
         session.getTransaction().commit();
         session.close();
         return true;
@@ -61,13 +61,28 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
-        Session session = FactoryConfigaration.getInstance().getSession();
-        session.beginTransaction();
-        session.delete(id);
-        session.getTransaction().commit();
-        session.close();
-        return true;
+        return false;
     }
+
+    @Override
+    public boolean delete(Long id) {
+        Session session = FactoryConfigaration.getInstance().getSession();
+        Transaction tx = session.beginTransaction();
+
+        // Load the entity first
+        Student student = session.get(Student.class, id);
+        if (student != null) {
+            session.remove(student);
+            tx.commit();
+            session.close();
+            return true;
+        } else {
+            tx.rollback();
+            session.close();
+            return false; // student not found
+        }
+    }
+
 
     @Override
     public String generateNewId() throws SQLException, ClassNotFoundException {

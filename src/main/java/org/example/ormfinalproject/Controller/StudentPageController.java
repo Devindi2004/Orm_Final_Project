@@ -80,7 +80,7 @@ public class StudentPageController {
 
     public void initialize() throws SQLException, ClassNotFoundException {
         setCellValueFactory();
-        setNextId();
+       // setNextId();
         loadtable();
     }
 
@@ -124,9 +124,9 @@ public class StudentPageController {
 
     @FXML
     void handleDeletePayment(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String id = txtStudentId.getText();
+        Long id = Long.valueOf(txtStudentId.getText());
 
-        if (id == null || id.trim().isEmpty()) {
+        if (id == null) {
             new Alert(Alert.AlertType.WARNING, "Please select a class to delete.", ButtonType.OK).show();
             return;
         }
@@ -141,7 +141,6 @@ public class StudentPageController {
         if (result.isPresent() && result.get() == ButtonType.OK) {
             boolean isDelete = studentBO.delete(id);
             if (isDelete) {
-                setNextId();
                 loadtable();
                 new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully").show();
             } else {
@@ -154,7 +153,7 @@ public class StudentPageController {
 
     @FXML
     void handleSavePayment(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String studentId = txtStudentId.getText();
+        //String studentId = txtStudentId.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
@@ -163,7 +162,7 @@ public class StudentPageController {
         String registrationDate = dpRegistrationDate.getValue().toString();
 
         StudentDTO studentDTO = new StudentDTO(
-               studentId,
+               //studentId,
                 name,
                 email,
                 phone,
@@ -175,7 +174,7 @@ public class StudentPageController {
         boolean isSave = studentBO.save(studentDTO);
 
         if (isSave) {
-            setNextId();
+            //setNextId();
             loadtable();
             new Alert(Alert.AlertType.INFORMATION, "Saved Successfully").show();
         } else {
@@ -185,7 +184,7 @@ public class StudentPageController {
 
     @FXML
     void handleUpdatePayment(ActionEvent event) throws SQLException, ClassNotFoundException {
-        String studentId = txtStudentId.getText();
+        long studentId = Long.parseLong(txtStudentId.getText());
         String name = txtName.getText();
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
@@ -205,7 +204,7 @@ public class StudentPageController {
 
         boolean isUpdate = studentBO.update(studentDTO);
         if (isUpdate) {
-            setNextId();
+            //setNextId();
             loadtable();
             new Alert(Alert.AlertType.INFORMATION, "Updated Successfully").show();
         }else {

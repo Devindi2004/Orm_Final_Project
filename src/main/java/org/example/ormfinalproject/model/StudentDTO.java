@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class StudentDTO {
-    private String studentId;
+    private long studentId;
     private String name;
     private String email;
     private String phone;
@@ -19,4 +19,12 @@ public class StudentDTO {
     private String registerFee;
     private String registrationDate;
 
+    public StudentDTO(String name, String email, String phone, String address, String registerFee, String registrationDate) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.registerFee = registerFee;
+        this.registrationDate = registrationDate;
+    }
 }

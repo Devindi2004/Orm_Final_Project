@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -116,7 +115,7 @@
         </HBox>
 
         <!-- Payment Table -->
-        <TableView fx:id="tblStudent" prefHeight="246.0" prefWidth="930.0" style="-fx-background-color: white; -fx-border-color: lightgray; -fx-border-radius: 8;" VBox.vgrow="ALWAYS">
+        <TableView fx:id="tblStudent" onMouseClicked="#tableClickOnAction" prefHeight="246.0" prefWidth="930.0" style="-fx-background-color: white; -fx-border-color: lightgray; -fx-border-radius: 8;" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn fx:id="colStudentId" prefWidth="100" text="Student ID" />
                 <TableColumn fx:id="colName" prefWidth="140" text="Name" />

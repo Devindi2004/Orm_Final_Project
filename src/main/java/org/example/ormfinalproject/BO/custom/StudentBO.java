@@ -12,7 +12,7 @@ public interface StudentBO extends SuperBO {
 
     String getNextId() throws SQLException, ClassNotFoundException;
 
-    boolean delete(String id) throws SQLException, ClassNotFoundException;
+    boolean delete(Long id) throws SQLException, ClassNotFoundException;
 
     boolean save(StudentDTO classDTO) throws SQLException, ClassNotFoundException;
 
