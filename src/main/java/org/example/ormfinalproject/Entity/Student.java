@@ -7,13 +7,13 @@ import lombok.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity                     // 🔑 Mark as Entity
-@Table(name = "student")    // 🔑 Map to table (default = class name if not specified)
+@Entity
+@Table(name = "student")
 public class Student {
 
-    @Id                     // 🔑 Primary Key
+    @Id
     @Column(name = "student_id")
-    private String studentId;   // Make it String, since you’re generating IDs like "S001"
+    private String studentId;
 
     private String name;
     private String email;

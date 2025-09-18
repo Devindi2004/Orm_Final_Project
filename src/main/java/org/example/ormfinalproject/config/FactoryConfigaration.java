@@ -5,42 +5,59 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class FactoryConfigaration {
+
     private static FactoryConfigaration factoryConfiguration;
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     private FactoryConfigaration() {
-        // Hibernate automatically looks for hibernate.properties in classpath (src/main/resources)
-        Configuration configuration = new Configuration();
+        try {
+            // Load hibernate.properties from classpath
+            Properties properties = new Properties();
+            try (InputStream inputStream = Thread.currentThread()
+                    .getContextClassLoader()
+                    .getResourceAsStream("hibernate.properties")) {
 
-        // Register annotated entity classes
-        configuration.addAnnotatedClass(Student.class);
-        configuration.addAnnotatedClass(Instructor.class);
-        configuration.addAnnotatedClass(Payment.class);
-        configuration.addAnnotatedClass(Course.class);
-        configuration.addAnnotatedClass(Lesson.class);
+                if (inputStream == null) {
+                    throw new RuntimeException("hibernate.properties not found in classpath");
+                }
 
-        // Build the session factory
-        sessionFactory = configuration.buildSessionFactory();
+                properties.load(inputStream);
+            }
+
+            // Create Hibernate configuration and add properties
+            Configuration configuration = new Configuration();
+            configuration.addProperties(properties);
+
+            // Register all annotated entity classes
+            configuration.addAnnotatedClass(Student.class);
+            configuration.addAnnotatedClass(Instructor.class);
+            configuration.addAnnotatedClass(Payment.class);
+            configuration.addAnnotatedClass(Course.class);
+            configuration.addAnnotatedClass(Lesson.class);
+
+            // Build SessionFactory
+            sessionFactory = configuration.buildSessionFactory();
+
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load hibernate.properties", e);
+        }
     }
 
+    // Singleton instance
     public static FactoryConfigaration getInstance() {
-        return (factoryConfiguration == null)
-                ? factoryConfiguration = new FactoryConfigaration()
-                : factoryConfiguration;
+        if (factoryConfiguration == null) {
+            factoryConfiguration = new FactoryConfigaration();
+        }
+        return factoryConfiguration;
     }
-
-    // ✅ Method name was confusing before – this one now correctly returns SessionFactory
-    public SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
-
-    // ✅ Use this when you want a Hibernate session
     public Session getSession() {
         return sessionFactory.openSession();
     }
-
-    // Note:
-    // - SessionFactory is thread-safe (singleton)
-    // - Session is NOT thread-safe (use per transaction/request)
 }
+
+// Open a new Hibernate session

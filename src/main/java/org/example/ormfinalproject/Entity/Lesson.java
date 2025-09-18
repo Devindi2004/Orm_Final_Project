@@ -1,77 +1,38 @@
 package org.example.ormfinalproject.Entity;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "lesson")
 public class Lesson {
-private int lessonId;
-private String date;
-private String time;
-private String status;
-private int studentId;
-private int courseId;
-private int instructorId;
 
-    public Lesson(int lessonId, String date, String time, String status, int studentId, int courseId, int instructorId) {
-        this.lessonId = lessonId;
-        this.date = date;
-        this.time = time;
-        this.status = status;
-        this.studentId = studentId;
-        this.courseId = courseId;
-        this.instructorId = instructorId;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lesson_id")
+    private int lessonId;
 
-    public int getLessonId() {
-        return lessonId;
-    }
+    private String date;
 
-    public void setLessonId(int lessonId) {
-        this.lessonId = lessonId;
-    }
+    private String time;
 
-    public String getDate() {
-        return date;
-    }
+    private String status;
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    // 🔑 Relationships
 
-    public String getTime() {
-        return time;
-    }
+    @ManyToOne
+    @JoinColumn(name = "student_id", nullable = false)
+    private Student student;
 
-    public void setTime(String time) {
-        this.time = time;
-    }
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    public int getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
-    }
-
-    public int getInstructorId() {
-        return instructorId;
-    }
-
-    public void setInstructorId(int instructorId) {
-        this.instructorId = instructorId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "instructor_id", nullable = false)
+    private Instructor instructor;
 }

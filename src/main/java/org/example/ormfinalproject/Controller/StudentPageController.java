@@ -185,7 +185,7 @@ public class StudentPageController {
 
     @FXML
     void handleUpdatePayment(ActionEvent event) throws SQLException, ClassNotFoundException {
-        int studentId = Integer.parseInt(txtStudentId.getText());
+        String studentId = txtStudentId.getText();
         String name = txtName.getText();
         String email = txtEmail.getText();
         String phone = txtPhone.getText();

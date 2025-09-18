@@ -1,7 +1,33 @@
 package org.example.ormfinalproject.Entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "payments")
 public class Payment {
-private int paymentId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
+    private int paymentId;
+
+    @Column(name = "student_id", nullable = false)
+    private int studentId;
+
+    @Column(name = "course_id", nullable = false)
+    private int courseId;
+
+    @Column(name = "payment_date", nullable = false, length = 20)
+    private String paymentDate;
+
+    @Column(name = "amount", nullable = false)
+    private double amount;
+
+    @Column(name = "payment_method", nullable = false, length = 50)
+    private String paymentMethod;
+
+    // No-arg constructor required by JPA
+    public Payment() {}
 
     public Payment(int paymentId, int studentId, int courseId, String paymentDate, double amount, String paymentMethod) {
         this.paymentId = paymentId;
@@ -12,12 +38,7 @@ private int paymentId;
         this.paymentMethod = paymentMethod;
     }
 
-    private int studentId;
-private int courseId;
-private String paymentDate;
-private double amount;
-private String paymentMethod;
-
+    // Getters and Setters
     public int getPaymentId() {
         return paymentId;
     }

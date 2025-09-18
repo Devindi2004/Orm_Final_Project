@@ -94,7 +94,7 @@
             <!-- Right Image -->
             <ImageView fitHeight="179.0" fitWidth="418.0" pickOnBounds="true" preserveRatio="true">
                 <image>
-                    <Image url="@../../../../../../../../../Pictures/Screenshots/payment.png" />
+<!--                    <Image url="@../../../../../../../../" />-->
                 </image>
             </ImageView>
         </HBox>

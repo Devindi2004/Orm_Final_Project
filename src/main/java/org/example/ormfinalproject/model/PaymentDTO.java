@@ -1,68 +1,33 @@
 package org.example.ormfinalproject.model;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Table(name = "payment")
+@Data                       // Generates getters, setters, toString, equals, hashCode
+@NoArgsConstructor          // Default constructor
+@AllArgsConstructor         // All-args constructor
 public class PaymentDTO {
-private int paymentId;
 
-    public PaymentDTO(int paymentId, int studentId, int courseId, String paymentDate, double amount, String paymentMethod) {
-        this.paymentId = paymentId;
-        this.studentId = studentId;
-        this.courseId = courseId;
-        this.paymentDate = paymentDate;
-        this.amount = amount;
-        this.paymentMethod = paymentMethod;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "payment_id")
+    private int paymentId;
 
+    @Column(name = "student_id")
     private int studentId;
-private int courseId;
-private String paymentDate;
-private double amount;
-private String paymentMethod;
 
-    public int getPaymentId() {
-        return paymentId;
-    }
+    @Column(name = "course_id")
+    private int courseId;
 
-    public void setPaymentId(int paymentId) {
-        this.paymentId = paymentId;
-    }
+    @Column(name = "payment_date")
+    private String paymentDate;
 
-    public int getStudentId() {
-        return studentId;
-    }
+    private double amount;
 
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    public int getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
-    }
-
-    public String getPaymentDate() {
-        return paymentDate;
-    }
-
-    public void setPaymentDate(String paymentDate) {
-        this.paymentDate = paymentDate;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
+    @Column(name = "payment_method")
+    private String paymentMethod;
 }
