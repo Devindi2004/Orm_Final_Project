@@ -6,8 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -16,127 +15,102 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600" prefWidth="950" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ormfinalproject.Controller.CoursePageController">
+<AnchorPane prefHeight="648.0" prefWidth="950.0" style="-fx-background-color: linear-gradient(to bottom right, #e0e7ff, #ffffff);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ormfinalproject.Controller.CoursePageController">
+    <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" VBox.vgrow="ALWAYS">
 
-    <VBox layoutX="16.8" layoutY="15.2" prefHeight="570.0" prefWidth="919.0" spacing="15" style="-fx-background-color: white;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="15.0">
+        <!-- Header -->
+        <Label alignment="CENTER" maxWidth="Infinity" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: linear-gradient(to right, #3b4cca, #6b7280); -fx-background-radius: 10; -fx-padding: 15;" text="Course Management">
+            <font><Font name="System Bold" size="24.0" /></font>
+            <tooltip><Tooltip text="Course Management Dashboard" /></tooltip>
+        </Label>
 
-        <Label alignment="CENTER" prefHeight="62.0" prefWidth="919.0" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #eff4fe; -fx-background-color: #333c7c; -fx-background-radius: 15;" text="Course Management">
-            <font>
-                <Font name="Lucida Sans Unicode" size="12.0" />
-            </font></Label>
+        <Separator style="-fx-background-color: #6b7280;" HBox.hgrow="ALWAYS" />
 
-        <Separator prefHeight="22.0" prefWidth="919.0" style="-fx-background-color: #333c7c;" />
-
-        <HBox fx:id="imagehbox" alignment="CENTER_RIGHT" prefHeight="218.0" prefWidth="919.0" spacing="20" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
-
-            <GridPane alignment="CENTER_RIGHT" hgap="15" prefHeight="268.0" prefWidth="542.0" style="-fx-padding: 10;" vgap="15">
+        <!-- Input Form -->
+        <HBox fx:id="imagehbox" alignment="CENTER" maxWidth="Infinity" spacing="30" stylesheets="@../css/Student.css">
+            <GridPane alignment="CENTER" hgap="15" prefHeight="212.0" prefWidth="338.0" style="-fx-padding: 20; -fx-background-color: #f9fafb; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" vgap="15">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="30" />
                     <ColumnConstraints percentWidth="70" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints />
-                    <RowConstraints />
-                    <RowConstraints />
-                    <RowConstraints />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
+                    <RowConstraints vgrow="SOMETIMES" />
                 </rowConstraints>
 
-                <Label text="Course ID :" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
+                <!-- Course ID -->
+                <Label text="Course ID:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <font><Font name="System Bold" size="14.0" /></font>
                 </Label>
-                <TextField fx:id="txtCourseId" editable="false" prefHeight="26.0" prefWidth="367.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <TextField fx:id="txtCourseId" editable="false" promptText="Enter Course ID" style="-fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <tooltip><Tooltip text="Unique ID for the course" /></tooltip>
+                </TextField>
 
-                <Label text="Name :" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
+                <!-- Name -->
+                <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <font><Font name="System Bold" size="14.0" /></font>
                 </Label>
-                <TextField fx:id="txtCourseName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="txtCourseName" promptText="Enter Course Name" style="-fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <tooltip><Tooltip text="Course name" /></tooltip>
+                </TextField>
 
-                <Label text="Duration :" GridPane.columnIndex="0" GridPane.rowIndex="2">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
+                <!-- Duration -->
+                <Label text="Duration:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <font><Font name="System Bold" size="14.0" /></font>
                 </Label>
-                <TextField fx:id="txtDuration" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <TextField fx:id="txtDuration" promptText="Enter Duration" style="-fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <tooltip><Tooltip text="Course duration" /></tooltip>
+                </TextField>
 
-                <Label text="Fees :" GridPane.columnIndex="0" GridPane.rowIndex="3">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
+                <!-- Fees -->
+                <Label text="Fees:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <font><Font name="System Bold" size="14.0" /></font>
                 </Label>
-                <TextField fx:id="txtFees" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="txtFees" promptText="Enter Fees" style="-fx-background-radius: 5;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <tooltip><Tooltip text="Course fees" /></tooltip>
+                </TextField>
             </GridPane>
-            <ImageView fitHeight="179.0" fitWidth="418.0" pickOnBounds="true" preserveRatio="true">
-                <image>
-                    <Image url="@../../../../../../../../../Pictures/Screenshots/Screenshot%202025-09-06%20142922.png" />
-                </image>
-            </ImageView>
 
+            <!-- Right Side Placeholder -->
+            <VBox alignment="CENTER" spacing="10" style="-fx-padding: 20;">
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #3b4cca;" text="Course Profile" />
+                <Label style="-fx-text-fill: #6b7280;" text="No Image Available" />
+            </VBox>
         </HBox>
 
-        <HBox alignment="CENTER" prefHeight="61.0" prefWidth="919.0" spacing="15">
-            <Button fx:id="btnAdd" onAction="#handleAddCourse" prefHeight="38.0" prefWidth="120.0" style="-fx-background-color: #333c7c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15;" text="Save">
-                <font>
-                    <Font size="14.0" />
-                </font>
-                <graphic>
-                    <ImageView fitHeight="26.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="https://img.icons8.com/?size=100&amp;id=O5q3KoA7NnF9&amp;format=png&amp;color=FFFFFF" />
-                        </image>
-                    </ImageView>
-                </graphic></Button>
-            <Button onAction="#handleClear" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #333c7c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15;" text="Clear">
-                <font>
-                    <Font size="14.0" />
-                </font>
-                <graphic>
-                    <ImageView fitHeight="30.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="https://img.icons8.com/?size=100&amp;id=MVQ6DwlJgTPl&amp;format=png&amp;color=FFFFFF" />
-                        </image>
-                    </ImageView>
-                </graphic></Button>
-            <Button fx:id="btnUpdate" alignment="CENTER" onAction="#handleUpdateCourse" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #333c7c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15;" text="Update">
-                <font>
-                    <Font size="14.0" />
-                </font>
-                <graphic>
-                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="https://img.icons8.com/?size=100&amp;id=11680&amp;format=png&amp;color=FFFFFF" />
-                        </image>
-                    </ImageView>
-                </graphic></Button>
-            <Button alignment="CENTER" onAction="#handleDeleteCourse" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #333c7c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15;" text="Delete">
-                <font>
-                    <Font size="14.0" />
-                </font>
-                <graphic>
-                    <ImageView fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="https://img.icons8.com/?size=100&amp;id=G01ACMKXfdpJ&amp;format=png&amp;color=FFFFFF" />
-                        </image>
-                    </ImageView>
-                </graphic>
+        <!-- Action Buttons -->
+        <HBox alignment="CENTER" maxWidth="Infinity" spacing="20">
+            <Button fx:id="btnAdd" onAction="#handleAddCourse" style="-fx-background-color: linear-gradient(to right, #3b4cca, #6b7280); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand;" text="Save">
+                <font><Font size="14.0" /></font>
+                <tooltip><Tooltip text="Save course details" /></tooltip>
+            </Button>
+            <Button onAction="#handleClear" style="-fx-background-color: linear-gradient(to right, #3b4cca, #6b7280); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand;" text="Clear">
+                <font><Font size="14.0" /></font>
+                <tooltip><Tooltip text="Clear all fields" /></tooltip>
+            </Button>
+            <Button fx:id="btnUpdate" onAction="#handleUpdateCourse" style="-fx-background-color: linear-gradient(to right, #3b4cca, #6b7280); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand;" text="Update">
+                <font><Font size="14.0" /></font>
+                <tooltip><Tooltip text="Update selected course" /></tooltip>
+            </Button>
+            <Button onAction="#handleDeleteCourse" style="-fx-background-color: linear-gradient(to right, #3b4cca, #6b7280); -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 10 20; -fx-cursor: hand;" text="Delete">
+                <font><Font size="14.0" /></font>
+                <tooltip><Tooltip text="Delete selected course" /></tooltip>
             </Button>
         </HBox>
 
-        <TableView fx:id="tblCourses" prefHeight="246.0" prefWidth="930.0" style="-fx-background-color: white; -fx-border-color: lightgray; -fx-border-radius: 8;" VBox.vgrow="ALWAYS">
+        <!-- Table -->
+        <TableView fx:id="tblCourses" prefHeight="181.0" prefWidth="870.0" style="-fx-background-color: #ffffff; -fx-border-color: #e5e7eb; -fx-border-radius: 8; -fx-table-cell-border-color: transparent;" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn fx:id="colCourseId" prefWidth="120" text="Course ID" />
-                <TableColumn fx:id="colCourseName" prefWidth="180" text="Name" />
-                <TableColumn fx:id="colDuration" prefWidth="140" text="Duration" />
-                <TableColumn fx:id="colFees" prefWidth="120" text="Fees" />
+                <TableColumn fx:id="colCourseId" minWidth="120" prefWidth="120" text="Course ID" />
+                <TableColumn fx:id="colCourseName" minWidth="180" prefWidth="180" text="Name" />
+                <TableColumn fx:id="colDuration" minWidth="140" prefWidth="140" text="Duration" />
+                <TableColumn fx:id="colFees" minWidth="120" prefWidth="120" text="Fees" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-
     </VBox>
-
 </AnchorPane>
