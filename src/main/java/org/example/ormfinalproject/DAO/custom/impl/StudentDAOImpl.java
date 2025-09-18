@@ -35,20 +35,20 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    public boolean save(Student customerDTO) throws SQLException, ClassNotFoundException {
+    public boolean save(Student studentDTO) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfigaration.getInstance().getSession();
         session.beginTransaction();
-        session.save(customerDTO);
+        session.save(studentDTO);
         session.getTransaction().commit();
         session.close();
         return true;
     }
 
     @Override
-    public boolean update(Student customerDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(Student studentDTO) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfigaration.getInstance().getSession();
         session.beginTransaction();
-        session.update(customerDTO);
+        session.update(studentDTO);
         session.getTransaction().commit();
         session.close();
         return true;
