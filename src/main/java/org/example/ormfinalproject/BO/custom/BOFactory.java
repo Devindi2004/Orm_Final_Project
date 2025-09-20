@@ -18,7 +18,8 @@ public class BOFactory {
         COURSE,
         INSTRUCTOR,
         LESSON,
-        PAYMENT
+        PAYMENT,
+        USER
     }
     public SuperBO getBO(BOTypes boType) {
         switch(boType){
@@ -32,6 +33,8 @@ public class BOFactory {
                 return new LessonBOImpl();
             case PAYMENT:
                 return new PaymentBOImpl();
+            case USER:
+                return new UserBOImpl();
             default:
                 return null;
         }

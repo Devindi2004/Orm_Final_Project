@@ -13,7 +13,9 @@ module org.example.ormfinalproject {
     opens org.example.ormfinalproject.model to javafx.base;
 
     exports org.example.ormfinalproject; // keep exporting main package if needed
-    requires jakarta.persistence; // Fix "java: cannot access javax.naming.Referenceable" error
+    requires jakarta.persistence;
+    requires java.desktop;
+    requires java.mail; // Fix "java: cannot access javax.naming.Referenceable" error
     exports org.example.ormfinalproject.controller; // if you want public API access
     opens org.example.ormfinalproject.Entity to org.hibernate.orm.core; // <-- important for Hibernate
 

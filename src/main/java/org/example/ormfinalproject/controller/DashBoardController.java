@@ -92,7 +92,7 @@ public class DashBoardController {
     LessonBO lessonBO = (LessonBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.LESSON);
     PaymentBO paymentBO = (PaymentBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.PAYMENT);
     CourseBO courseBO = (CourseBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.COURSE);
-//    UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+    UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
 
     @FXML
     void handleManageCourses(ActionEvent event) {
@@ -174,8 +174,8 @@ public class DashBoardController {
         ArrayList<CourseDTO> allCourse = courseBO.getAllCourse();
         lblTotalCourses.setText(String.valueOf(allCourse.size()));
     }
-//    public void setUser () throws SQLException, ClassNotFoundException {
-//        ArrayList<UserDTO> allUser = userBO.getAllUser();
-//        lblTotalUsers.setText(String.valueOf(allUser.size()));
-//    }
+    public void setUser () throws SQLException, ClassNotFoundException {
+        ArrayList<UserDTO> allUser = userBO.getAllUser();
+        lblTotalUsers.setText(String.valueOf(allUser.size()));
+    }
 }

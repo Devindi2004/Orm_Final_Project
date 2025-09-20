@@ -29,11 +29,13 @@
         <Separator style="-fx-background-color: #6b7280;" HBox.hgrow="ALWAYS" />
 
         <!-- Input Form -->
-        <HBox fx:id="imagehbox" alignment="CENTER" maxWidth="Infinity" spacing="30" stylesheets="@../css/User.css">
-            <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="68.0" onMouseClicked="#backButton" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../../../../../../Downloads/back.png" />
-            </ImageView>
-            <AnchorPane prefHeight="226.0" prefWidth="124.0" />
+        <HBox fx:id="imagehbox" alignment="CENTER" maxWidth="Infinity" spacing="30" stylesheets="@../css/Student.css">
+            <AnchorPane prefHeight="226.0" prefWidth="124.0">
+            <children>
+                  <ImageView fx:id="backButton" fitHeight="41.0" fitWidth="68.0" layoutX="-6.0" layoutY="84.0" onMouseClicked="#backButton" pickOnBounds="true" preserveRatio="true">
+                      <Image url="@../../../../../../Downloads/back.png" />
+                  </ImageView>
+            </children></AnchorPane>
             <GridPane alignment="CENTER" hgap="15" prefHeight="220.0" prefWidth="438.0" style="-fx-padding: 20; -fx-background-color: #f9fafb; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" vgap="15">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="30" />
