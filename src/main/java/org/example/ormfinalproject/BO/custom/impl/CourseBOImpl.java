@@ -2,11 +2,9 @@ package org.example.ormfinalproject.BO.custom.impl;
 
 import org.example.ormfinalproject.BO.custom.CourseBO;
 import org.example.ormfinalproject.Entity.Course;
-import org.example.ormfinalproject.Entity.Instructor;
 import org.example.ormfinalproject.dao.DAOFactory;
 import org.example.ormfinalproject.dao.custom.CourseDAO;
 import org.example.ormfinalproject.model.CourseDTO;
-import org.example.ormfinalproject.model.InstructorDTO;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,6 +15,7 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public boolean update(CourseDTO courseDTO) throws SQLException, ClassNotFoundException {
+        System.out.println("qwwwwww"+courseDTO.getCourseId());
         return courseDAO.update(new Course(courseDTO.getCourseId(),courseDTO.getName(),courseDTO.getDuration(),courseDTO.getFee()));
     }
 

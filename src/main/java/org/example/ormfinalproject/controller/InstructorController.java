@@ -98,8 +98,7 @@ public class InstructorController {
 //                instructorId,
                 name,
                 email,
-                phone,
-                availability
+                phone
         );
 
         boolean isSave = instructorBO.save(instructorDTO);

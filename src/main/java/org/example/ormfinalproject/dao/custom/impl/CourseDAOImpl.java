@@ -1,6 +1,5 @@
 package org.example.ormfinalproject.dao.custom.impl;
 
-import org.example.ormfinalproject.Entity.Instructor;
 import org.example.ormfinalproject.config.FactoryConfigaration;
 import org.example.ormfinalproject.dao.custom.CourseDAO;
 import org.example.ormfinalproject.Entity.Course;
@@ -39,7 +38,7 @@ public class CourseDAOImpl implements CourseDAO {
     public boolean save(Course courseDTO) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfigaration.getInstance().getSession();
         session.beginTransaction();
-        session.save(courseDTO);
+        session.persist(courseDTO);
         session.getTransaction().commit();
         session.close();
         return true;
@@ -49,7 +48,7 @@ public class CourseDAOImpl implements CourseDAO {
     public boolean update(Course courseDTO) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfigaration.getInstance().getSession();
         session.beginTransaction();
-        session.update(courseDTO);
+        session.merge(courseDTO);
         session.getTransaction().commit();
         session.close();
         return true;
@@ -62,12 +61,46 @@ public class CourseDAOImpl implements CourseDAO {
 
     @Override
     public boolean delete(long id) throws SQLException, ClassNotFoundException {
-        return false;
+        Session session = FactoryConfigaration.getInstance().getSession();
+        Transaction tx = session.beginTransaction();
+
+        // Load the entity first
+        Course course = session.get(Course.class, id);
+        if (course != null) {
+            session.remove(course);
+            tx.commit();
+            session.close();
+            return true;
+        } else {
+            tx.rollback();
+            session.close();
+            return false; // student not found
+        }
     }
 
     @Override
     public String generateNewId() throws SQLException, ClassNotFoundException {
-        return "";
+        Session session = FactoryConfigaration.getInstance().getSession();
+        try {
+            Query<String> query = session.createQuery(
+                    "SELECT c.id FROM Instructor c ORDER BY c.id DESC",
+                    String.class
+            );
+            query.setMaxResults(1);
+
+            String lastId = query.uniqueResult();
+
+            if (lastId == null) {
+                return "S001";
+            }
+
+            int idNum = Integer.parseInt(lastId.replace("S", ""));
+            idNum++;
+            return String.format("S%03d", idNum);
+
+        } finally {
+            session.close();
+        }
     }
 
     @Override

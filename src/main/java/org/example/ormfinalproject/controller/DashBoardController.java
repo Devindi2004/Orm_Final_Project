@@ -132,6 +132,7 @@ public class DashBoardController {
     public void initialize() throws SQLException, ClassNotFoundException {
         setStudent();
         setInstructor();
+        setCourse();
 //        setLesson();
 //        setPayment();
         //setUser();
@@ -169,10 +170,10 @@ public class DashBoardController {
 //        ArrayList<PaymentDTO> allPayment = paymentBO.getAllPayment();
 //        lblTotalPayments.setText(String.valueOf(allPayment.size()));
 //    }
-//    public void setCourse () throws SQLException, ClassNotFoundException {
-//        ArrayList<CourseDTO> allCourse = courseBO.getAllCourse();
-//        lblTotalCourses.setText(String.valueOf(allCourse.size()));
-//    }
+    public void setCourse () throws SQLException, ClassNotFoundException {
+        ArrayList<CourseDTO> allCourse = courseBO.getAllCourse();
+        lblTotalCourses.setText(String.valueOf(allCourse.size()));
+    }
 //    public void setUser () throws SQLException, ClassNotFoundException {
 //        ArrayList<UserDTO> allUser = userBO.getAllUser();
 //        lblTotalUsers.setText(String.valueOf(allUser.size()));

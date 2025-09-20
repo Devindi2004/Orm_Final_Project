@@ -19,7 +19,9 @@ public class Course {
     @Column(nullable = false, length = 100)
     private String name;
 
+    @Column(nullable = false, length = 100)
     private String duration;
 
+    @Column(nullable = false, length = 100)
     private String fee;
 }

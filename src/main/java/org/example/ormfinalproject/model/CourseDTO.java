@@ -5,6 +5,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 
 public class CourseDTO {
     private long courseId;
@@ -12,4 +13,9 @@ public class CourseDTO {
     private String duration;
     private String fee;
 
+    public CourseDTO(String name, String duration, String fee) {
+        this.name = name;
+        this.duration = duration;
+        this.fee = fee;
+    }
 }

@@ -12,7 +12,7 @@ public class InstructorDTO{
     private String email;
     private String phone;
 
-    public InstructorDTO(String name, String email, String phone, String availability) {
+    public InstructorDTO(String name, String email, String phone) {
         this.name = name;
         this.email = email;
         this.phone = phone;
