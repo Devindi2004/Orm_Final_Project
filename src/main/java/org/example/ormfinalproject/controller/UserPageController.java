@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,7 +15,9 @@ import org.example.ormfinalproject.model.StudentDTO;
 import org.example.ormfinalproject.model.UserDTO;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class UserPageController {
 
@@ -68,7 +67,7 @@ public class UserPageController {
         loadtable();
     }
 
-    private void loadtable() {
+    private void loadtable() throws SQLException, ClassNotFoundException {
         ArrayList<UserDTO> userDTOS = userBO.getAllUser();
 
         ObservableList<UserDTO> data = FXCollections.observableArrayList();
@@ -102,23 +101,89 @@ public class UserPageController {
     }
 
     @FXML
-    void handleDeleteUser(ActionEvent event) {
+    void handleDeleteUser(ActionEvent event) throws SQLException, ClassNotFoundException {
+        Long id = Long.valueOf(txtUserId.getText());
 
+        if (id == null) {
+            new Alert(Alert.AlertType.WARNING, "Please select a class to delete.", ButtonType.OK).show();
+            return;
+        }
+
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmAlert.setTitle("Delete Confirmation");
+        confirmAlert.setHeaderText(null);
+        confirmAlert.setContentText("Are you sure you want to delete the class with ID: " + id + "?");
+
+        Optional<ButtonType> result = confirmAlert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            boolean isDelete = userBO.delete(id);
+            if (isDelete) {
+                loadtable();
+                new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Deleting Failed").show();
+            }
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "Deletion Cancelled").show();
+        }
     }
 
     @FXML
-    void handleSaveUser(ActionEvent event) {
+    void handleSaveUser(ActionEvent event) throws SQLException, ClassNotFoundException {
 
+        String name = txtUserName.getText();
+        String password = txtPassword.getText();
+        String role = txtRole.getText();
+
+        UserDTO userDTO = new UserDTO(
+               name,
+               password,
+               role
+        );
+
+        boolean isSave = userBO.save(userDTO);
+
+        if (isSave) {
+            loadtable();
+            new Alert(Alert.AlertType.INFORMATION, "Saved Successfully").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Saving Failed").show();
+        }
     }
 
     @FXML
-    void handleUpdateUser(ActionEvent event) {
+    void handleUpdateUser(ActionEvent event) throws SQLException, ClassNotFoundException {
+        String name = txtUserName.getText();
+        String password = txtPassword.getText();
+        String role = txtRole.getText();
 
+        UserDTO userDTO = new UserDTO(
+                Long.parseLong(txtUserId.getText()),
+                name,
+                password,
+                role
+        );
+
+        boolean isUpdate = userBO.update(userDTO);
+        if (isUpdate) {
+            loadtable();
+            new Alert(Alert.AlertType.INFORMATION, "Updated Successfully").show();
+        }else {
+            new Alert(Alert.AlertType.ERROR, "Update Failed").show();
+        }
     }
 
     @FXML
     void tableClickOnAction(MouseEvent event) {
+        UserDTO selectedItem = tblUsers.getSelectionModel().getSelectedItem();
 
+        if (selectedItem != null) {
+            txtUserId.setText(String.valueOf(selectedItem.getUserId()));
+            txtUserName.setText(selectedItem.getName());
+            txtPassword.setText(selectedItem.getPassword());
+            txtRole.setText(selectedItem.getRole());
+        }
     }
 
 }
