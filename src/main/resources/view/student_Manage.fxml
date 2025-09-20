@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: linear-gradient(to bottom right, #e0e7ff, #ffffff);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ormfinalproject.Controller.StudentPageController">
+<AnchorPane prefHeight="600.0" prefWidth="950.0" style="-fx-background-color: linear-gradient(to bottom right, #e0e7ff, #ffffff);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ormfinalproject.controller.StudentPageController">
     <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" VBox.vgrow="ALWAYS">
 
         <!-- Title -->

@@ -1,4 +1,4 @@
-package org.example.ormfinalproject.Controller;
+package org.example.ormfinalproject.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class InstructorContrpller {
+public class LessonController {
 
     @FXML
     private Button btnAdd;
@@ -16,37 +16,49 @@ public class InstructorContrpller {
     private Button btnUpdate;
 
     @FXML
-    private TableColumn<?, ?> colAvailability;
+    private TableColumn<?, ?> colCourseId;
 
     @FXML
-    private TableColumn<?, ?> colEmail;
+    private TableColumn<?, ?> colDate;
 
     @FXML
     private TableColumn<?, ?> colInstructorId;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<?, ?> colLessonId;
 
     @FXML
-    private TableColumn<?, ?> colPhone;
+    private TableColumn<?, ?> colStatus;
+
+    @FXML
+    private TableColumn<?, ?> colStudentId;
+
+    @FXML
+    private TableColumn<?, ?> colTime;
 
     @FXML
     private TableView<?> tblPayments;
 
     @FXML
-    private TextField txtAvailability;
+    private TextField txtCourseId;
 
     @FXML
-    private TextField txtEmail;
+    private TextField txtDate;
 
     @FXML
     private TextField txtInstructorId;
 
     @FXML
-    private TextField txtName;
+    private TextField txtLessonId;
 
     @FXML
-    private TextField txtPhone;
+    private TextField txtStatus;
+
+    @FXML
+    private TextField txtStudentId;
+
+    @FXML
+    private TextField txtTime;
 
     @FXML
     void handleAddPayment(ActionEvent event) {

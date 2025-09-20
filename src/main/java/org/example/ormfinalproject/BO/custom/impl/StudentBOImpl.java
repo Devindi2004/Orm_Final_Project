@@ -1,9 +1,9 @@
 package org.example.ormfinalproject.BO.custom.impl;
 
 import org.example.ormfinalproject.BO.custom.StudentBO;
-import org.example.ormfinalproject.DAO.DAOFactory;
-import org.example.ormfinalproject.DAO.custom.StudentDAO;
 import org.example.ormfinalproject.Entity.Student;
+import org.example.ormfinalproject.dao.DAOFactory;
+import org.example.ormfinalproject.dao.custom.StudentDAO;
 import org.example.ormfinalproject.model.StudentDTO;
 
 import java.sql.SQLException;
@@ -25,10 +25,10 @@ public class StudentBOImpl implements StudentBO {
         return studentDTOS;
     }
 
-    @Override
-    public String getNextId() throws SQLException, ClassNotFoundException {
-        return studentDAO.generateNewId();
-    }
+//    @Override
+//    public String getNextId() throws SQLException, ClassNotFoundException {
+//        return studentDAO.generateNewId();
+//    }
 
     @Override
     public boolean delete(Long id) throws SQLException, ClassNotFoundException {

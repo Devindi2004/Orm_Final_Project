@@ -1,4 +1,4 @@
-package org.example.ormfinalproject.Controller;
+package org.example.ormfinalproject.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

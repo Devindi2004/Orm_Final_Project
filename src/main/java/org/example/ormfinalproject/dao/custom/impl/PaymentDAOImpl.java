@@ -1,6 +1,6 @@
-package org.example.ormfinalproject.DAO.custom.impl;
+package org.example.ormfinalproject.dao.custom.impl;
 
-import org.example.ormfinalproject.DAO.custom.PaymentDAO;
+import org.example.ormfinalproject.dao.custom.PaymentDAO;
 import org.example.ormfinalproject.Entity.Payment;
 
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ public class PaymentDAOImpl implements PaymentDAO {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    public boolean delete(long id) throws SQLException, ClassNotFoundException {
         return false;
     }
 

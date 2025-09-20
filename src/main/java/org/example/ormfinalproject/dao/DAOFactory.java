@@ -1,6 +1,6 @@
-package org.example.ormfinalproject.DAO;
+package org.example.ormfinalproject.dao;
 
-import org.example.ormfinalproject.DAO.custom.impl.*;
+import org.example.ormfinalproject.dao.custom.impl.*;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;

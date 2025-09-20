@@ -27,4 +27,7 @@ public class StudentDTO {
         this.registerFee = registerFee;
         this.registrationDate = registrationDate;
     }
+
+    public StudentDTO(long studentId, String name, String email, String phone, String registerFee, String registrationDate) {
+    }
 }

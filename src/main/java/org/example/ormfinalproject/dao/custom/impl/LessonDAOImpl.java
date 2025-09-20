@@ -1,6 +1,6 @@
-package org.example.ormfinalproject.DAO.custom.impl;
+package org.example.ormfinalproject.dao.custom.impl;
 
-import org.example.ormfinalproject.DAO.custom.LessonDAO;
+import org.example.ormfinalproject.dao.custom.LessonDAO;
 import org.example.ormfinalproject.Entity.Lesson;
 
 import java.sql.SQLException;
@@ -28,7 +28,7 @@ public class LessonDAOImpl implements LessonDAO {
     }
 
     @Override
-    public boolean delete(String id) throws SQLException, ClassNotFoundException {
+    public boolean delete(long id) throws SQLException, ClassNotFoundException {
         return false;
     }
 

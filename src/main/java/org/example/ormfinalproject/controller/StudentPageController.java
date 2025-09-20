@@ -1,4 +1,4 @@
-package org.example.ormfinalproject.Controller;
+package org.example.ormfinalproject.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -96,10 +96,10 @@ public class StudentPageController {
         tblStudent.setItems(data);
     }
 
-    private void setNextId() throws SQLException, ClassNotFoundException {
-        String nextId = studentBO.getNextId();
-        txtStudentId.setText(nextId);
-    }
+//    private void setNextId() throws SQLException, ClassNotFoundException {
+//        String nextId = studentBO.getNextId();
+//        txtStudentId.setText(nextId);
+//    }
 
     private void setCellValueFactory() {
         colStudentId.setCellValueFactory(new PropertyValueFactory<>("studentId"));
@@ -200,6 +200,7 @@ public class StudentPageController {
                 address,
                 registerFee,
                 registrationDate
+
         );
 
         boolean isUpdate = studentBO.update(studentDTO);

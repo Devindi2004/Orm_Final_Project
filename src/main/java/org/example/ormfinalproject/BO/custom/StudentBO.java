@@ -10,7 +10,7 @@ public interface StudentBO extends SuperBO {
 
     ArrayList<StudentDTO> getAllStudent() throws SQLException, ClassNotFoundException;
 
-    String getNextId() throws SQLException, ClassNotFoundException;
+//    String getNextId() throws SQLException, ClassNotFoundException;
 
     boolean delete(Long id) throws SQLException, ClassNotFoundException;
 
