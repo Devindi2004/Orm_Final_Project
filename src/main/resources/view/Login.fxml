@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -17,28 +14,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import java.net.URL?>
 <AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to bottom right, #e0f2fe, #f0f9ff);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ormfinalproject.controller.LoginPageController">
     <VBox alignment="CENTER" spacing="30" style="-fx-padding: 50; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 3);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" VBox.vgrow="ALWAYS">
-
-        <!-- Logo or Header Image -->
-        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../../../../../../Downloads/driving_school_logo.png" />
-            <effect>
-                <DropShadow blurType="GAUSSIAN" color="#00000020" height="8.0" radius="8.0" spread="0.3" width="8.0" />
-            </effect>
-        </ImageView>
 
         <!-- Header Label -->
         <Label alignment="CENTER" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: linear-gradient(to right, #3b82f6, #60a5fa); -fx-background-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" text="Welcome to DriveSmart Academy">
             <font><Font name="System Bold" size="28.0" /></font>
             <tooltip><Tooltip text="Login to your driving school account" /></tooltip>
         </Label>
-
-        <!-- Language Selector -->
-        <ComboBox fx:id="languageComboBox" prefWidth="200.0" style="-fx-background-radius: 10; -fx-padding: 8; -fx-border-color: #d1d5db; -fx-border-radius: 10; -fx-font-size: 14px;">
-            <tooltip><Tooltip text="Select your preferred language" /></tooltip>
-        </ComboBox>
 
         <!-- Login Form -->
         <GridPane alignment="CENTER" hgap="15" prefHeight="280.0" prefWidth="450.0" style="-fx-padding: 35; -fx-background-color: #ffffff; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4); -fx-border-color: #e0f2fe; -fx-border-radius: 20; -fx-border-width: 1;" vgap="20">

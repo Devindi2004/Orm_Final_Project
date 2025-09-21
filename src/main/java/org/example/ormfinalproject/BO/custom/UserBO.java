@@ -14,4 +14,5 @@ public interface UserBO extends SuperBO {
     boolean save(UserDTO userDTO) throws SQLException, ClassNotFoundException;
 
     boolean update(UserDTO userDTO) throws SQLException, ClassNotFoundException;
+
 }

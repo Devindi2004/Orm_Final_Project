@@ -34,6 +34,7 @@ public class FactoryConfigaration {
             configuration.addProperties(properties);
 
             // Register all annotated entity classes
+            configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Student.class);
             configuration.addAnnotatedClass(Instructor.class);
             configuration.addAnnotatedClass(Payment.class);

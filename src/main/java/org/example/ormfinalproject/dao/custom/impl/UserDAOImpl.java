@@ -13,30 +13,30 @@ import java.util.ArrayList;
 
 public class UserDAOImpl implements UserDAO {
     @Override
-    public ArrayList<User> getAll() throws SQLException, ClassNotFoundException {
-        ArrayList<User> users = new ArrayList<>();
-        Transaction transaction = null;
+        public ArrayList<User> getAll() {
+            Session session = FactoryConfigaration.getInstance().getSession();
+            Transaction transaction = null;
+            ArrayList<User> users = new ArrayList<>();
 
-        try (Session session = FactoryConfigaration.getInstance().getSession()) {
-            transaction = session.beginTransaction();
+            try {
+                transaction = session.beginTransaction();
+                users = (ArrayList<User>) session.createQuery("FROM User", User.class).list();
+                transaction.commit();   // ✅ commit, not rollback
+            } catch (Exception e) {
+                if (transaction != null) transaction.rollback();
+                e.printStackTrace();
+            } finally {
+                session.close(); // ✅ always close
+            }
 
-            Query<User> query = session.createQuery("FROM User ", User.class);
-            users = (ArrayList<User>) query.list();
-
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) transaction.rollback();
-            e.printStackTrace();
+            return users;
         }
 
-        return (users != null) ? users : new ArrayList<>();
-    }
-
-    @Override
-    public boolean save(User userDTO) throws SQLException, ClassNotFoundException {
+        @Override
+    public boolean save(User user) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfigaration.getInstance().getSession();
         session.beginTransaction();
-        session.save(userDTO);
+        session.save(user);
         session.getTransaction().commit();
         session.close();
         return true;
@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
     public boolean update(User userDTO) throws SQLException, ClassNotFoundException {
         Session session = FactoryConfigaration.getInstance().getSession();
         session.beginTransaction();
-        session.update(userDTO);
+        session.merge(userDTO);
         session.getTransaction().commit();
         session.close();
         return true;
@@ -102,7 +102,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User search(String id) throws SQLException, ClassNotFoundException {
-        return null;
+    public User search(String name) throws SQLException, ClassNotFoundException {
+        Session session = FactoryConfigaration.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+        User user = session.createQuery("From User where name = :name", User.class).setParameter("name", name).uniqueResult();
+        transaction.commit();
+        session.close();
+        return user;
+
     }
 }

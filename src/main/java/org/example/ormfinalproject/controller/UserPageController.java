@@ -142,9 +142,16 @@ public class UserPageController {
                role
         );
 
+        System.out.println("dddddddddddd////////////////");
+
         boolean isSave = userBO.save(userDTO);
 
+        System.out.println("dddddddddddd////////////////...........22");
+
+
+
         if (isSave) {
+            System.out.println("dddddddddddd////////////////...........333333333333333");
             loadtable();
             new Alert(Alert.AlertType.INFORMATION, "Saved Successfully").show();
         } else {
